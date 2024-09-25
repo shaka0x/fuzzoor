@@ -33,8 +33,7 @@ A Visual Studio Code extension that helps you to build and run fuzzing test suit
 | `fuzzoor.medusaPath` | Path to folder containing the Medusa executable binary. | |
 <!-- | `fuzzoor.failOnUnexpectedError` | Check for revert with unexpected error on every function call. | `false` | -->
 
-> [!NOTE]
-> If `Echidna` and `Medusa` are added to the PATH in the system, the `fuzzoor.echidnaPath` and `fuzzoor.medusaPath` settings can be left empty.
+> ℹ️ If `Echidna` and `Medusa` are added to the PATH in the system, the `fuzzoor.echidnaPath` and `fuzzoor.medusaPath` settings can be left empty.
 
 ## Video demo
 

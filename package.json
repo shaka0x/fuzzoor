@@ -2,7 +2,7 @@
   "name": "fuzzoor",
   "displayName": "Fuzzoor",
   "description": "Toolkit for fuzzing Solidity projects",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "Shaka",
   "author": "Shaka",
   "repository": {
