@@ -1,0 +1,267 @@
+{
+  "name": "fuzzoor",
+  "displayName": "Fuzzoor",
+  "description": "Toolkit for fuzzing Solidity projects",
+  "version": "1.0.0",
+  "publisher": "shaka0x",
+  "author": "Shaka",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaka0x/fuzzoor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shaka0x/fuzzoor/issues"
+  },
+  "icon": "media/fuzzoor.png",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Testing"
+  ],
+  "keywords": [
+    "fuzzoor",
+    "fuzz",
+    "fuzzing",
+    "echidna",
+    "medusa",
+    "testing",
+    "solidity",
+    "evm",
+    "solc",
+    "auditing"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Fuzzoor",
+      "properties": {
+        "fuzzoor.projectFolder": {
+          "type": "string",
+          "default": "",
+          "description": "Relative path from workspace to folder of the project.",
+          "order": 0
+        },
+        "fuzzoor.contractsFolder": {
+          "type": "string",
+          "default": "src",
+          "description": "Relative path from project folder to folder of the contracts.",
+          "order": 1
+        },
+        "fuzzoor.excludedFolders": {
+          "type": "array",
+          "default": ["test", "tests", "mock", "mocks"],
+          "description": "Folders to exclude in the contracts folder.",
+          "order": 2
+        },
+        "fuzzoor.outputFolder": {
+          "type": "string",
+          "default": "out",
+          "description": "Relative path from project folder to folder of the compilation output.",
+          "order": 3
+        },
+        "fuzzoor.forceSendETH": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include handler function to force send ether to the target contract.",
+          "order": 4
+        },
+        "fuzzoor.echidnaPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to folder containing the Echidna executable binary.",
+          "order": 5
+        },
+        "fuzzoor.medusaPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to folder containing the Medusa executable binary.",
+          "order": 6
+        }
+      }
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "fuzzoor",
+          "name": "Fuzzoor",
+          "contextualTitle": "Fuzzoor"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "fuzzoor.setProjectFolder",
+        "title": "Set project folder"
+      },
+      {
+        "command": "fuzzoor.setContractsFolder",
+        "title": "Set contracts folder"
+      },
+      {
+        "command": "fuzzoor.setOutputFolder",
+        "title": "Set compilation output folder"
+      },
+      {
+        "command": "fuzzoor.echidnaCoverageContract",
+        "title": "Echidna coverage",
+        "icon": {
+          "light": "resources/light/echidna_report.svg",
+          "dark": "resources/dark/echidna_report.svg"
+        }
+      },
+      {
+        "command": "fuzzoor.medusaCoverageContract",
+        "title": "Medusa coverage",
+        "icon": {
+          "light": "resources/light/medusa_report.svg",
+          "dark": "resources/dark/medusa_report.svg"
+        }
+      },
+      {
+        "command": "fuzzoor.toggle",
+        "title": "Check/Uncheck"
+      },
+      {
+        "command": "fuzzoor.refreshAll",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "fuzzoor.build",
+        "title": "Build",
+        "icon": {
+          "light": "resources/light/write.svg",
+          "dark": "resources/dark/write.svg"
+        }
+      },
+      {
+        "command": "fuzzoor.runEchidna",
+        "title": "Run Echidna",
+        "icon": {
+          "light": "resources/light/echidna.svg",
+          "dark": "resources/dark/echidna.svg"
+        }
+      },
+      {
+        "command": "fuzzoor.runMedusa",
+        "title": "Run Medusa",
+        "icon": {
+          "light": "resources/light/medusa.svg",
+          "dark": "resources/dark/medusa.svg"
+        }
+      },
+      {
+        "command": "fuzzoor.echidnaCoverage",
+        "title": "Echidna coverage report"
+      },
+      {
+        "command": "fuzzoor.medusaCoverage",
+        "title": "Medusa coverage report"
+      },
+      {
+        "command": "fuzzoor.stopTreeBuilding",
+        "title": "Stop tree building"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "fuzzoor.build",
+          "when": "view == fuzzoor",
+          "group": "navigation@0"
+        },
+        {
+          "command": "fuzzoor.runEchidna",
+          "when": "view == fuzzoor",
+          "group": "navigation@1"
+        },
+        {
+          "command": "fuzzoor.runMedusa",
+          "when": "view == fuzzoor",
+          "group": "navigation@2"
+        },
+        {
+          "command": "fuzzoor.refreshAll",
+          "when": "view == fuzzoor",
+          "group": "navigation@3"
+        },
+        {
+          "command": "fuzzoor.setProjectFolder",
+          "when": "view == fuzzoor",
+          "group": "menu@0"
+        },
+        {
+          "command": "fuzzoor.setContractsFolder",
+          "when": "view == fuzzoor",
+          "group": "menu@1"
+        },
+        {
+          "command": "fuzzoor.setOutputFolder",
+          "when": "view == fuzzoor",
+          "group": "menu@2"
+        },
+        {
+          "command": "fuzzoor.echidnaCoverage",
+          "when": "view == fuzzoor",
+          "group": "menu@3"
+        },
+        {
+          "command": "fuzzoor.medusaCoverage",
+          "when": "view == fuzzoor",
+          "group": "menu@4"
+        },
+        {
+          "command": "fuzzoor.stopTreeBuilding",
+          "when": "view == fuzzoor",
+          "group": "menu@5"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "fuzzoor.echidnaCoverageContract",
+          "when": "view == fuzzoor && viewItem == contract",
+          "group": "inline"
+        },
+        {
+          "command": "fuzzoor.medusaCoverageContract",
+          "when": "view == fuzzoor && viewItem == contract",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.89.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "eslint": "^8.57.0",
+    "jsdom": "^24.1.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
