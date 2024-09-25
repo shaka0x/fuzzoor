@@ -1,12 +1,12 @@
 # Fuzzoor
 
 <p align="center">
-  <img src="https://github.com/shaka0x/fuzzoor/blob/main/media/fuzzoor.png" title="logo" width="200">
+  <img src="https://github.com/shaka0x/fuzzoor/blob/main/media/fuzzoor.png?raw=true" title="logo" width="200">
 </p>
 
 A Visual Studio Code extension that helps you to build and run fuzzing test suites for Solidity smart contracts.
 
-![](https://github.com/shaka0x/fuzzoor/blob/main/media/fuzzoor.gif)
+![](https://github.com/shaka0x/fuzzoor/blob/main/media/fuzzoor.gif?raw=true)
 
 ## Features
 
@@ -38,7 +38,7 @@ A Visual Studio Code extension that helps you to build and run fuzzing test suit
 
 ## Video demo
 
-[![Video demo](https://github.com/shaka0x/fuzzoor/blob/main/media/video_preview.png)](https://youtu.be/8qatdy_D2Dw)
+[![Video demo](https://github.com/shaka0x/fuzzoor/blob/main/media/video_preview.png?raw=true)](https://youtu.be/8qatdy_D2Dw)
 
 [Demo codebase](https://github.com/shaka0x/weth-demo-fuzzoor.git)
 
